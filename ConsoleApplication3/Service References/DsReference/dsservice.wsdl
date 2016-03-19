@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:ds" name="dsservice" targetNamespace="urn:ds" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types />
+  <message name="dsint_getvideo">
+    <part name="String_1" type="xsd:string" />
+  </message>
+  <message name="dsint_getvideoResponse">
+    <part name="result" type="xsd:base64Binary" />
+  </message>
+  <portType name="dsint">
+    <operation name="getvideo" parameterOrder="String_1">
+      <input message="tns:dsint_getvideo" />
+      <output message="tns:dsint_getvideoResponse" />
+    </operation>
+  </portType>
+  <binding name="dsintBinding" type="tns:dsint">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <operation name="getvideo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="encoded" namespace="urn:ds" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </input>
+      <output>
+        <soap:body use="encoded" namespace="urn:ds" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Dsservice">
+    <port name="dsintPort" binding="tns:dsintBinding">
+      <soap:address location="http://NaveenRaj-PC:8080/ds/dsservice" />
+    </port>
+  </service>
+</definitions>
